@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      form { /*로그인 폼 스타일 지정*/
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        color: black;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        padding: 30px;
+        width: 350px;
+      }
+      form h2 {
+        color: black;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+      label {
+        color: black;
+        display: block;
+      }
+      input { /*아이디, 비밀번호 기입란 스타일 지정*/
+        background-color: transparent;
+        border-style: hidden;
+        border-bottom: 2px solid #ccc;
+        padding: 10px 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      input:focus { /*입력할 때 입력창 스타일 지정*/
+        outline: 2px solid orange;
+        border-bottom: 2px solid #fff;
+        border-radius: 10px;
+      }
+      button, #join { /*로그인, 회원가입 버튼 기본 스타일 지정*/
+        display: block;
+        width: 100%;
+        border-radius: 20px;
+        font-size: 17px;
+        padding: 10px;
+        text-align: center;
+        border: 0;
+        margin-bottom: 5px;
+      }
+      #logIn { /*로그인 버튼 스타일 지정*/
+        background-color: orange;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      #join { /*회원가입 버튼 로그인과 구분가도록 설정*/
+        color: white;
+        background-color:coral;
+        margin-bottom: 20px;
+      }
+      a {
+        text-decoration: none;
+      }
+      div {
+        text-align: center;
+      }
+      div a { /*아이디 찾기, 비밀번호 찾기 글자 스타일 지정*/
+        text-decoration: none;
+        color: #777;
+        display: inline-block;
+        letter-spacing: -0.5px;
+      }
+      div a+a::before { /*아이디 찾기, 비밀번호 찾기 사이 구분선*/
+        content: "";
+        display: inline-block;
+        width: 1px;
+        height: 20px;
+        background-color: #777;
+        margin: 5px 10px -4px;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="loginForm" method="post" action="/member/loginProc">
+      <h2>로그인</h2>
+      <label for="id"> 아이디 </label>
+      <input
+        type="text"
+        name="id"
+        id="id"
+        placeholder="아이디를 입력하세요."
+        required
+      />
+      <label for="pw"> 비밀번호 </label>
+      <input
+        type="password"
+        name="pw"
+        id="pw"
+        placeholder="비밀번호를 입력하세요."
+        required
+      />
+      <button id="logIn" type="submit">로그인</button>
+      <a href="member/join" id="join">회원가입</a>
+      <div class="lostFound">
+        <a href="/findID.html">아이디 찾기</a>
+        <a href="/findPW.html">비밀번호 찾기</a>
+      </div>
+    </form>
+  </body>
+</html>
