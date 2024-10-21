@@ -69,6 +69,7 @@ public class CommonController {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("common/myPage");
         mav.addObject("title", "마이 페이지");
+        log.info("1234");
         return mav;
     }
 
