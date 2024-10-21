@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.StoreMapper">
+
+	
+	<insert id="insertStore" parameterType="com.example.demo.vo.StoreVO">
+        INSERT INTO store_info (mgtNo, sitetel, x , y)
+        VALUES (#{mgtNo}, #{sitetel}, #{x} , #{y})
+    </insert>
+
+    <!-- 게시글 전체 조회 -->
+    <select id="selectAll" resultType="java.util.HashMap">
+        SELECT MGTNO as mgtno, UPDATEGBN as updategbn FROM store_info
+        WHERE MGTNO = '3030000-121-2006-00003'
+    </select>
+
+    <!-- 게시글 하나 조회 -->
+    <select id="selectOne" parameterType="Long" resultType="com.example.demo.vo.StoreVO">
+        SELECT * FROM store_info WHERE mgtNo = #{mgtNo}
+    </select>
+
+    <select id="selectList"  resultType="com.example.demo.vo.StoreVO">
+        SELECT * FROM store_info 
+    </select>
+
+ 
+</mapper>

@@ -13,7 +13,7 @@ import com.example.demo.payload.request.DropRequest;
 import com.example.demo.service.CrudService;
 
 import com.example.demo.vo.MemberShipVO;
-
+import com.example.demo.vo.StoreVO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -122,6 +122,11 @@ public class MemberService implements CrudService<MemberShipVO> {
 		mapper.updateInfo(memberShipVO);
 		
 		return true;
+	}
+	@Override
+	public List<StoreVO> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
