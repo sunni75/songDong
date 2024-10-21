@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.service.StoreService2;
 import com.example.demo.service.impl.MemberService;
 import com.example.demo.vo.MemberShipVO;
+import com.example.demo.vo.StoreInfoVO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -33,7 +36,17 @@ public class CommonController {
     @Autowired
     private MemberService memberService;
 
+    @Autowired
+    private StoreService2 storeService;
 
+    @GetMapping("/storeList")
+    public String showStoreList(Model model) {
+        List<StoreInfoVO> storeList = storeService.getAllStores();
+        model.addAttribute("storeList", storeList);
+        return "storeList"; // JSP 템플릿 이름
+    }
+    
+    
     // 로그인 페이지
     @GetMapping("/login")
     public ModelAndView login(
@@ -117,12 +130,14 @@ public class CommonController {
     }
 
     @GetMapping("/findOften")
-    public ModelAndView findOften() {
+    public ModelAndView findOften(Model model, @RequestParam(value = "shopName", required = false, defaultValue = "") String shopName) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("common/findOften");
         mav.addObject("title", "즐겨찾기 페이지");
+        mav.addObject("shopName", shopName);
         return mav;
     }
+
 
     @GetMapping("/map")
     public ModelAndView map() {
@@ -178,4 +193,6 @@ public class CommonController {
         mav.addObject("title", "검색히스토리");
         return mav;
     }
+    
+
 }
