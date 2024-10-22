@@ -63,6 +63,26 @@ public class CommonController {
         }
         return mav;
     }
+    
+    /**
+	 * 회원가입 양식
+	 * @return
+	 */
+	@GetMapping("/join")
+	public ModelAndView join() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("common/join");
+		return mav;
+	}
+	
+	/**
+	 * 회원가입 처리
+	 * @param memberVO
+	 */
+	@PostMapping("/joinProc")
+	public void joinProc(@ModelAttribute MemberShipVO memberShipVO) {
+		memberService.insert(memberShipVO);
+	}
 
     @GetMapping("/myPage")
     public ModelAndView myPage(HttpServletRequest request) {
@@ -83,6 +103,22 @@ public class CommonController {
     public String findID() {
         return "common/findID";
     }
+    
+    /**
+	 * 이메일로 아이디 찾기
+	 * @param email
+	 * @return
+	 */
+	@GetMapping("/findID/{email}")
+	@ResponseBody
+	public ResponseEntity<?> findIDByEmail(@PathVariable String email) {
+		return ResponseEntity.ok(memberService.findID(email));
+	}
+	
+	@GetMapping("/findPW")
+	public String findPW() {
+		return "common/findPW";
+	}
 
     @RequestMapping("/myInfo")
     public ModelAndView myInfo(HttpServletRequest request) {
@@ -163,18 +199,18 @@ public class CommonController {
         return mav;
     }
 
-    @GetMapping("/serch")
-    public ModelAndView serch() {
+    @GetMapping("/search")
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("common/serch");
+        mav.setViewName("common/search");
         mav.addObject("title", "검색");
         return mav;
     }
 
-    @GetMapping("/serchHistory")
-    public ModelAndView serchHistory() {
+    @GetMapping("/searchHistory")
+    public ModelAndView searchHistory() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("common/serchHistory");
+        mav.setViewName("common/searchHistory");
         mav.addObject("title", "검색히스토리");
         return mav;
     }

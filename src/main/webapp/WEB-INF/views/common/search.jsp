@@ -7,6 +7,6 @@
 	<title>${title}</title>
 </head>
 <body>
-	<p>serch</p>
+	<p>search</p>
 </body>
 </html>

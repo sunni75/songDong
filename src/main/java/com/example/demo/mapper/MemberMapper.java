@@ -52,7 +52,33 @@ public class MemberMapper {
 	 */
 	public int checkEmail(String email) {
 		return session.selectOne("member.checkEmail", email);
-	}	
+	}
+	
+	/**
+	 * 이메일로 아이디 찾기
+	 * @param email
+	 * @return
+	 */
+	public String findID(String email) {
+		return session.selectOne("member.findID", email);
+	}
+	
+	/**
+	 * 아이디와 이메일로 사용자의 PK값 얻어내기
+	 * @param memberVO
+	 * @return
+	 */
+	public Long findPW(MemberShipVO memberShipVO) {
+		return session.selectOne("member.findPW", memberShipVO);
+	}
+	
+	/**
+	 * PK값으로 비밀번호 변경
+	 * @param memberVO
+	 */
+	public void updatePW(MemberShipVO memberShipVO) {
+		session.update("member.updatePW", memberShipVO);
+	}
 	
 	/**
 	 * 회원정보 변경

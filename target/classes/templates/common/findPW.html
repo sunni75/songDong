@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>로그인</title>
+    <title>비밀번호 찾기</title>
     <style>
       * {
         margin: 0;
@@ -43,7 +43,7 @@
         border-bottom: 2px solid #fff;
         border-radius: 10px;
       }
-      button, #join { /*로그인, 회원가입 버튼 기본 스타일 지정*/
+      button, #login { /*비밀번호 찾기, 로그인 버튼 기본 스타일 지정*/
         display: block;
         width: 100%;
         border-radius: 20px;
@@ -53,13 +53,13 @@
         border: 0;
         margin-bottom: 5px;
       }
-      #logIn { /*로그인 버튼 스타일 지정*/
+      #findPW { /*비밀번호 찾기 버튼 스타일 지정*/
         background-color: orange;
         color: white;
         font-weight: bold;
         cursor: pointer;
       }
-      #join { /*회원가입 버튼 로그인과 구분가도록 설정*/
+      #login { /*로그인 버튼과 비밀번호 찾기 버튼 구분가도록 설정*/
         color: white;
         background-color:coral;
         margin-bottom: 20px;
@@ -69,26 +69,19 @@
       }
       div {
         text-align: center;
+        margin-top: 20px;
       }
-      div a { /*아이디 찾기, 비밀번호 찾기 글자 스타일 지정*/
+      div a { /*비밀번호 찾기 글자 스타일 지정*/
         text-decoration: none;
         color: #777;
         display: inline-block;
         letter-spacing: -0.5px;
       }
-      div a+a::before { /*아이디 찾기, 비밀번호 찾기 사이 구분선*/
-        content: "";
-        display: inline-block;
-        width: 1px;
-        height: 20px;
-        background-color: #777;
-        margin: 5px 10px -4px;
-      }
     </style>
   </head>
   <body>
-    <form class="loginForm" method="post" action="/member/loginProc">
-      <h2>로그인</h2>
+    <form class="findPWForm">
+      <h2>비밀번호 찾기</h2>
       <label for="id"> 아이디 </label>
       <input
         type="text"
@@ -97,19 +90,18 @@
         placeholder="아이디를 입력하세요."
         required
       />
-      <label for="pw"> 비밀번호 </label>
+      <label for="email"> 이메일 </label>
       <input
-        type="password"
-        name="pw"
-        id="pw"
-        placeholder="비밀번호를 입력하세요."
+        type="text"
+        name="email"
+        id="email"
+        placeholder="등록한 이메일을 입력하세요."
         required
       />
-      <button id="logIn" type="submit">로그인</button>
-      <a href="/member/join" id="join">회원가입</a>
+      <button id="findPW" type="submit">임시 비밀번호 받기</button>
+      <a href="/project_Login.html" id="login">로그인</a>
       <div class="lostFound">
-        <a href="/member/findID">아이디 찾기</a>
-        <a href="/member/findPW">비밀번호 찾기</a>
+        <a href="/project_FindID.html">아이디 찾기</a>
       </div>
     </form>
   </body>
