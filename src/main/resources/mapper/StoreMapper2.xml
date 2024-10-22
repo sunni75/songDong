@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.StoreMapper2">
+    <select id="getAllStores" resultType="com.example.demo.vo.StoreInfoVO">
+        SELECT * FROM STORE_INFO
+        WHERE TRDSTATENM != '폐업'
+        ORDER BY BPLCNM      
+    </select>
+</mapper>
